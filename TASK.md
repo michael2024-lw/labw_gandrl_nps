@@ -93,7 +93,7 @@ arXiv preprint arXiv:1805.04276.
 
 3в. Удалите кэши данных перед запуском
 
-3д. Попробуйте заменить tqdm на progressbar2, см. [вот это сообщение](https://github.com/tqdm/tqdm/issues/613)
+3д. Попробуйте заменить tqdm на progressbar2, см. [вот это сообщение](https://github.com/tqdm/tqdm/issues/613) или установить версию 2018 года.
 
  
 ### Задание 4. 
