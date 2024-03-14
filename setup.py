@@ -11,8 +11,8 @@ extensions = [
               ["syntax/checker.pyx"])
 ]
 
-if sys.version_info < (2,7):
-    sys.exit("Sorry, only Python >= 2.7 is supported")
+if sys.version_info < (2,7) or sys.version_info >= (2,8):
+    sys.exit("Sorry, only Python == 2.7 is supported")
 here = path.abspath(path.dirname(__file__))
 
 setup(
@@ -30,10 +30,10 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     packages=find_packages(),
-    install_requires=['cython', 'sh', 'tqdm', 'numpy',
-                      'torch', 'torchvision',
+    install_requires=['cython', 'sh', 'tqdm==4.64.1', 'numpy==1.14.0',
+                      'torch==0.3.1', 'torchvision==0.2.0',
                       'GitPython', 'pathlib',
-                      'matplotlib'],
+                      'matplotlib==2.1.2'],
     extras_require={
         'tests': ['mypy', 'flake8'],
         'dev': ['ipython', 'ipdb']
