@@ -249,7 +249,7 @@ def train_seq2seq_model(
         nb_ios_for_epoch = nb_ios
         # This is definitely not the most efficient way to do it but oh well
         dataset = shuffle_dataset(dataset, batch_size)
-        for sp_idx in tqdm(range(0, len(dataset["sources"]), batch_size), desc="Epoch " + str(epoch_idx) + "/" + str(nb_epochs)):
+        for sp_idx in tqdm(range(0, len(dataset["sources"]), batch_size), desc="Epoch " + str(epoch_idx+1) + "/" + str(nb_epochs)):
 
             batch_idx = int(sp_idx/batch_size)
             optimizer.zero_grad()
