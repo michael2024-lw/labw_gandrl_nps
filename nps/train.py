@@ -12,6 +12,7 @@ import numpy as np
 
 from pathlib import Path
 from tqdm import tqdm
+from tensorboardX import SummaryWriter
 
 # Project imports
 from nps.data import load_input_file, get_minibatch, shuffle_dataset
@@ -159,6 +160,12 @@ def train_seq2seq_model(
         json.dump(args_dict, args_dump_file, indent=2)
     # Setting up the logs
     log_file = result_dir / "logs.txt"
+    tbx_dir = result_dir / "runs"
+    if not tbx_dir.exists():
+        os.makedirs(str(tbx_dir))
+        time.sleep(1)  # Let some time for the dir to be created
+    tbx_file = result_dir / "runs/loss.json"
+
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
@@ -242,6 +249,7 @@ def train_seq2seq_model(
     # # Training Loop # #
     # ################# #
     #####################
+    tbx_writer = SummaryWriter("Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis")
     losses = []
     recent_losses = []
     best_val_acc = np.NINF
@@ -275,6 +283,7 @@ def train_seq2seq_model(
                                                              in_tgt_seq, in_tgt_seq_list,
                                                              out_tgt_seq, loss_criterion)
                 recent_losses.append(minibatch_loss)
+                tbx_writer.add_scalar('epochs/%d' % epoch_idx, minibatch_loss, batch_idx)
             elif signal == TrainSignal.RL or signal == TrainSignal.BEAM_RL:
                 inp_grids, out_grids, \
                     _, _, _, \
@@ -329,6 +338,7 @@ def train_seq2seq_model(
                 else:
                     raise NotImplementedError("Unknown Environment type")
                 recent_losses.append(minibatch_reward)
+                tbx_writer.add_scalar('epochs/%d' % epoch_idx, minibatch_reward, batch_idx)
             else:
                 raise NotImplementedError("Unknown Training method")
             optimizer.step()
@@ -391,3 +401,5 @@ def train_seq2seq_model(
                     torch.save(model, weight_file)
                     if use_cuda:
                         model.cuda()
+    tbx_writer.export_scalars_to_json(str(tbx_file))
+    tbx_writer.close()

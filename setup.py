@@ -33,7 +33,7 @@ setup(
     install_requires=['cython', 'sh', 'tqdm==4.64.1', 'numpy==1.14.0',
                       'torch==0.3.1', 'torchvision==0.2.0',
                       'GitPython', 'pathlib',
-                      'matplotlib==2.1.2'],
+                      'matplotlib==2.1.2', 'tensorboardX==1.9'],
     extras_require={
         'tests': ['mypy', 'flake8'],
         'dev': ['ipython', 'ipdb']
