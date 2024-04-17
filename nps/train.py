@@ -249,7 +249,7 @@ def train_seq2seq_model(
     # # Training Loop # #
     # ################# #
     #####################
-    tbx_writer = SummaryWriter("Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis")
+    tbx_writer = SummaryWriter(str(tbx_dir)+"/tensorboardx")
     losses = []
     recent_losses = []
     best_val_acc = np.NINF
