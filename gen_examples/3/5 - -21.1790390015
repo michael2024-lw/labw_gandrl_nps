@@ -1,0 +1,4 @@
+DEF run 
+    m( putMarker move WHILE c( leftIsClear c) 
+        w( move w)
+    m)

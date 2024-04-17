@@ -1,0 +1,6 @@
+DEF run 
+    m( pickMarker REPEAT R=3 
+        r( IF c( frontIsClear c) 
+            i( move i)
+        turnRight r)
+    m)

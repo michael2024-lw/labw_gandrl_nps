@@ -1,0 +1,2 @@
+DEF run 
+    m( move turnLeft move putMarker putMarker turnRight m)

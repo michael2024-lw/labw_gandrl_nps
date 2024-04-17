@@ -1,0 +1,4 @@
+DEF run 
+    m( putMarker move IF c( markersPresent c) 
+        i( putMarker i)
+    m)

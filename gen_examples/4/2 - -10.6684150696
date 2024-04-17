@@ -1,0 +1,4 @@
+DEF run 
+    m( REPEAT R=2 
+        r( putMarker turnRight r)
+    move turnLeft move turnLeft m)

@@ -1,0 +1,14 @@
+DEF run 
+    m( move REPEAT R=2 
+        r( putMarker IF c( frontIsClear c) 
+            i( move i)
+        pickMarker WHILE c( not c( rightIsClear c) c) 
+            w( pickMarker move w)
+        r)
+    turnRight IF c( markersPresent c) 
+        i( move turnRight move putMarker i)
+    move IFELSE c( not c( leftIsClear c) c) 
+        i( move i)
+    ELSE 
+        e( putMarker putMarker turnLeft e)
+    m)

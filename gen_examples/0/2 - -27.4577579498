@@ -1,0 +1,4 @@
+DEF run 
+    m( pickMarker WHILE c( frontIsClear c) 
+        w( turnLeft move turnRight w)
+    m)

@@ -1,0 +1,4 @@
+DEF run 
+    m( move WHILE c( markersPresent c) 
+        w( pickMarker move w)
+    putMarker turnLeft move turnRight m)

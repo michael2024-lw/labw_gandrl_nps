@@ -1,0 +1,6 @@
+DEF run 
+    m( pickMarker turnLeft move turnRight move IFELSE c( noMarkersPresent c) 
+        i( putMarker i)
+    ELSE 
+        e( pickMarker e)
+    turnLeft turnLeft m)

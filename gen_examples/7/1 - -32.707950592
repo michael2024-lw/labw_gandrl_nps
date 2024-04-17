@@ -1,0 +1,2 @@
+DEF run 
+    m( turnLeft move pickMarker m)
